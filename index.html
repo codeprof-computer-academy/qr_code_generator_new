@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generator</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+          <img src="logo.png" alt="" width="40" class="logo">
+
+        <h2>QR Generator</h2>
+          <nav class="navbar">
+               <a href="index.html"> <img src="home.png" alt="" width="20"> Home </a>
+               <a href="about.html"> <img src="about.png" alt="" width="20"> About App </a>
+               <a href="signup.html"> <img src="account.png" alt="" width="20"> Signup </a>
+               <a href="login.html"> <img src="login.png" alt="" width="20"> Login </a>
+               <a href="help.html"> <img src="help.png" alt="" width="20"> Help </a>
+               <a href="contact.html"> <img src="phone.png" alt="" width="20"> Contact us </a>
+               <a href=""> <img src="close.png" alt="" width="20"> Close App </a>
+          </nav>
+
+          <button class="menu-btn"></button>
+    </header>
+
+    
+    <main>
+        <div class="cover"></div>
+       
+         
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="enter text" class="user-text">
+                    <button class="convert-btn">Convert</button>
+                </div>
+
+                <div class="output-group">
+                    <img src="" alt="" width="100" class="qr-image">
+                    <button ></button>       
+                </div>
+
+
+            </form>
+    </main>
+    <footer>
+          <p>&copy; Copyright 2024. All rights reserved. Powered by Codeprof Team</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+          // target the form
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault()
+                let userText = document.querySelector('.user-text').value
+                let userInputField = document.querySelector('.user-text')
+                if (userText === "") {
+
+                    // add shake animation
+                    userInputField.classList.add("shake")
+                    setTimeout(function(){
+                        // remove shake animation after every sec
+                        userInputField.classList.remove("shake")
+
+                    },1000)
+                   
+
+                } else {
+                    
+                  
+                    document.querySelector('.qr-image').src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + userText
+
+                    document.querySelector('form').classList.add("show")
+                }
+            })
+    </script>
+</body>
+</html>
